@@ -346,7 +346,7 @@ set(libnetconf_headers_location ${CMAKE_CURRENT_BINARY_DIR}/project_libnetconf/h
 include(ExternalProject)
 ExternalProject_Add(project_libnetconf
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}/project_libnetconf"
-    URL "https://github.com/abhikeshav/libnetconf/archive/master.zip"
+    URL "file:///${CMAKE_SOURCE_DIR}/project_libnetconf.tar.gz"
     CONFIGURE_COMMAND "./configure"
     BUILD_COMMAND "make"
     INSTALL_DIR "${libnetconf_location}"
@@ -384,8 +384,8 @@ set(libyang_include_location include/libyang)
 set(libyang_headers_location ${CMAKE_CURRENT_BINARY_DIR}/project_libyang/headers)
 ExternalProject_Add(project_libyang
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}/project_libyang"
-    URL "https://github.com/manradhaCisco/libyang/archive/master.zip"
-    CMAKE_ARGS -DSTATIC=true -DCMAKE_BUILD_TYPE=Debug
+    URL "file:///${CMAKE_SOURCE_DIR}/project_libyang.tar.gz"
+    CMAKE_ARGS -DSTATIC=true -DCMAKE_BUILD_TYPE:STRING=Debug
     INSTALL_DIR "${libyang_location}"
     INSTALL_COMMAND mkdir -p ${libyang_headers_location}/libyang && cp ${libyang_headers} ${libyang_headers_location}/libyang
 )
